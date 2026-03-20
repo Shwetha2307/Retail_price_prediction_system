@@ -1,5 +1,8 @@
 # 💰 Retail Price Prediction System
 
+## 🚀 Live Demo
+Check out the live app here: https://zyprice-ai.onrender.com
+
 ## 🔍 Overview
 
 Retail Price Intelligence System is an AI-powered web application that analyzes and predicts product prices across multiple e-commerce platforms like Amazon and Flipkart.
