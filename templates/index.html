@@ -26,7 +26,7 @@
         /* Key Metrics & Visualization Styles */
         .savings-banner { background: rgba(203,166,247,0.1); border: 1.5px dashed var(--accent); border-radius: 15px; padding: 15px; width: 85%; margin: 20px auto; text-align: center; }
         .graph-container { margin: 30px auto; border-radius: 20px; overflow: hidden; border: 1px solid #334155; max-width: 100%; display: flex; justify-content: center; }
-        
+        .metrics{font-size: small;}
         /* Dynamic Recommendation Badges (BUY/WAIT) */
         .badge-custom { font-weight: 700; padding: 15px 30px; border-radius: 15px; display: inline-block; margin-top: 20px; box-shadow: 0 0 20px rgba(0,0,0,0.2); }
         .wait { background: #fecaca; color: #991b1b; border: 2px solid #ef4444; }
@@ -56,8 +56,7 @@
                     </div>
                 </form>
             </div>
-
-            {% if result %}
+             {% if result %}
             <div class="main-card">
                 <h2 class="text-center mb-5" style="color: var(--accent); font-weight: 800;">{{ result.product }}</h2>
                 
@@ -91,7 +90,18 @@
                     <div class="badge-custom {% if result.recommendation == 'WAIT' %}wait{% else %}buy{% endif %}">
                         <span class="fs-5">{{ result.recommendation }}: {{ result.insight }}</span>
                     </div>
+                    <br><br>
+                    <h6>Market Inventory Visualization</h6>
+                    <img src="{{ url_for('static', filename='product_wordcloud.png') }}" alt="Product Word Cloud" style="width:50%; max-width:300px;">
                 </div>
+                    {% if result %}
+                <center>
+                <div class="metrics">
+                    <p><strong>Model Confidence:</strong> {{ result.accuracy }}</p>
+                    <p><strong>Average Error:</strong> ₹{{ result.mae }} ({{ result.error_p }}%)</p>
+                </div>
+                </center>
+                {% endif %}
             </div>
             {% endif %}
         </div>
